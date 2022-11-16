@@ -13,7 +13,9 @@ const server = app.listen(3000, ()=> {
     console.log("Start server : localhost:3000");
 });
 
-var mysql      = require('mysql');
+let mysql      = require('mysql');
+/**
+ * 회사에서 할때
 var pool = mysql.createPool({
     connectionLimit : 10,
     host     : 'localhost',
@@ -21,6 +23,19 @@ var pool = mysql.createPool({
     password : '1234',
     database : 'testdb'
 });
+ */
+
+
+//집에서 할때
+let pool = mysql.createPool({
+    connectionLimit : 10,
+    host     : 'localhost',
+    user     : 'root',
+    password : '1234',
+    database : 'test'
+});
+
+
 
 //views 폴더 가져오게 해주는 내용
 app.set('views', __dirname + '/views');
