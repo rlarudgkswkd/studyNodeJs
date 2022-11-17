@@ -13,7 +13,9 @@ const server = app.listen(3000, ()=> {
     console.log("Start server : localhost:3000");
 });
 
-var mysql      = require('mysql');
+let mysql      = require('mysql');
+
+ //회사에서 할때
 var pool = mysql.createPool({
     connectionLimit : 10,
     host     : 'localhost',
@@ -22,8 +24,22 @@ var pool = mysql.createPool({
     database : 'testdb'
 });
 
+
+/**
+//집에서 할때
+let pool = mysql.createPool({
+    connectionLimit : 10,
+    host     : 'localhost',
+    user     : 'root',
+    password : '1234',
+    database : 'test'
+});
+*/
+
+
 //views 폴더 가져오게 해주는 내용
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/public/views');
+app.use(express.static(__dirname + '/public'))
 
 //view 엔진 , ejs 엔진 사용 : html 안에서 js 코드 사용하게끔, 마치 jsp와 비슷
 app.set('view engine','ejs');
